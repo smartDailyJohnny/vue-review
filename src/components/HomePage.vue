@@ -4,7 +4,7 @@
 <template>
   <div id="HomePage">
     <div>
-      this is the img
+      <img class="robot" src="@/assets/imgs/robot-home.png" aria-hidden="true">
     </div>
     <div class="get-started">
       <a href="">Get Started</a> building your first robot!
@@ -12,6 +12,12 @@
   </div>
 </template>
 
-<style>
+<style lang="scss" scoped>
+#HomePage {
+  text-align: center;
 
+  .robot {
+    height: 300px;
+  }
+}
 </style>
