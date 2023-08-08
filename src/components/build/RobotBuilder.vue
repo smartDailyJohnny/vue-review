@@ -1,5 +1,6 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
+import availableParts from '@/data/parts';
 import PartSelector from '@/components/build/PartSelector.vue';
 // state ================================
 const cart = ref([]);
@@ -17,26 +18,23 @@ const addToCart = () => {
     cart.value.push({ cost: cost, title: robot.head.title })
 }
 
-const headBorderStyle = computed(() => {
-    return { border: selectedRobot.value.head.onSale ? '3px solid red' : '' }
-})
 </script>
 
 <template>
     <div id="RobotBuilder">
         <div>
+            <!-- <pre>{{ availableParts.heads }}</pre> -->
             <button class="add-to-cart" @click="addToCart">Add to Cart</button>
             <div class="top-row">
-                <!-- <div class="robot-name">{{ selectedRobot.head.title }}<span v-if="selectedRobot.head.onSale" class="sale">Sale!</span></div> -->
-                <PartSelector />
+                <PartSelector :parts="availableParts.heads" />
             </div>
             <div class="middle-row">
-                <PartSelector />
-                <PartSelector />
-                <PartSelector />
+                <PartSelector :parts="availableParts.arms" />
+                <PartSelector :parts="availableParts.torsos" />
+                <PartSelector :parts="availableParts.arms" />
             </div>
             <div class="bottom-row">
-                <PartSelector />
+                <PartSelector :parts="availableParts.bases" />
             </div>
             <div>
                 <h1>Cart</h1>
