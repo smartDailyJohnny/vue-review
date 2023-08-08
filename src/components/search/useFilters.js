@@ -10,9 +10,11 @@ function filterResults(results, filters) {
     ));
 }
 
+// use searchResults exported from useSearch.js
 export default function useFilters(searchResults) {
     const filters = ref([]);
 
+    // this is for the quick filters and removing them
     const applyFilters = (filter) => filters.value.push(filter);
     const clearFilters = () => { filters.value = []; };
 

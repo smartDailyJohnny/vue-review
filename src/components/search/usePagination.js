@@ -25,6 +25,7 @@ export default function usePagination(filteredSearchResults) {
         return filteredSearchResults.value.slice(startIndex, endIndex);
     });
 
+    // export functions and data ==============
     return {
         currentPage,
         nextPage,

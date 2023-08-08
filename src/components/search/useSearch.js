@@ -11,7 +11,7 @@ export default function useSearch(originalSearchTerm) {
         let searchResults;
         const term = searchTerm || originalSearchTerm;
 
-        if (!term) searchResults = allParts;
+        if (!term) searchResults = allParts; // 如果沒有特別的filter就顯示allParts
         else {
             const lowerTerm = term.toLowerCase();
             searchResults = allParts.filter(
