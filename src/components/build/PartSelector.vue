@@ -1,6 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue';
-
+import { ref, computed, defineEmits } from 'vue';
 // props ===========================
 const props = defineProps({
     parts: {
@@ -12,7 +11,8 @@ const props = defineProps({
         default: ''
     }
 });
-const emits = defineEmits()
+// emits ===========================
+const emit = defineEmits(['partSelected']);
 // state  ================================
 const selectedPartIndex = ref(0);
 
@@ -34,7 +34,7 @@ const selectNextPart = () => {
         props.parts.length,
     );
     // emit a custom event named partSelected to the parent
-    emits('partSelected', selectedPartIndex.value)
+    emit('partSelected', selectedPart.value)
 }
 
 const selectPreviousPart = () => {
@@ -42,7 +42,7 @@ const selectPreviousPart = () => {
         selectedPartIndex.value,
         props.parts.length,
     );
-    emits('partSelected', selectedPartIndex.value)
+    emit('partSelected', selectedPart.value)
 }
 // computed ===========================
 const selectedPart = computed(() => {
