@@ -8,6 +8,9 @@ import armDualClaw from '@/data/images/arm-dual-claw.png'
 import armGrabber from '@/data/images/arm-grabber.png'
 import armPropeller from '@/data/images/arm-propeller.png'
 import armStubbyClaw from '@/data/images/arm-stubby-claw.png'
+import torsoFlexibleGauged from '@/data/images/torso-flexible-gauged.png'
+import torsoGauged from '@/data/images/torso-gauged.png'
+import torsoPouch from '@/data/images/torso-pouch.png'
 import baseDoubleWheel from '@/data/images/base-double-wheel.png'
 import baseRocket from '@/data/images/base-rocket.png'
 import baseSingleWheel from '@/data/images/base-single-wheel.png'
@@ -105,33 +108,33 @@ const parts = {
             cost: 125
         }
     ],
-    // torsos: [
-    //     {
-    //         id: 1,
-    //         description: 'A torso that can bend slightly at the waist and equiped with a heat guage.',
-    //         title: 'Flexible Gauged',
-    //         src: images('./torso-flexible-gauged.png'),
-    //         type: 'torsos',
-    //         cost: 1575
-    //     },
-    //     {
-    //         id: 2,
-    //         description: 'A less flexible torso with a battery gauge.',
-    //         title: 'Gauged',
-    //         src: images('./torso-gauged.png'),
-    //         type: 'torsos',
-    //         cost: 1385
-    //     },
-    //     {
-    //         id: 3,
-    //         description: 'A simple torso with a pouch for carrying items.',
-    //         title: 'Gauged',
-    //         src: images('./torso-pouch.png'),
-    //         type: 'torsos',
-    //         cost: 785,
-    //         onSale: true
-    //     }
-    // ],
+    torsos: [
+        {
+            id: 1,
+            description: 'A torso that can bend slightly at the waist and equiped with a heat guage.',
+            title: 'Flexible Gauged',
+            src: torsoFlexibleGauged,
+            type: 'torsos',
+            cost: 1575
+        },
+        {
+            id: 2,
+            description: 'A less flexible torso with a battery gauge.',
+            title: 'Gauged',
+            src: torsoGauged,
+            type: 'torsos',
+            cost: 1385
+        },
+        {
+            id: 3,
+            description: 'A simple torso with a pouch for carrying items.',
+            title: 'Pouch',
+            src: torsoPouch,
+            type: 'torsos',
+            cost: 785,
+            onSale: true
+        }
+    ],
     bases: [
         {
             id: 1,
