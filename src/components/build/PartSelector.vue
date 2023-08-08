@@ -7,7 +7,12 @@ const props = defineProps({
         type: Array,
         default: () => ([]),
     },
+    position: {
+        type: String,
+        default: ''
+    }
 });
+const emits = defineEmits()
 // state  ================================
 const selectedPartIndex = ref(0);
 
@@ -24,19 +29,20 @@ const getNextValidIndex = (index, length) => {
 }
 
 const selectNextPart = () => {
-    console.log(selectedPartIndex.value)
     selectedPartIndex.value = getNextValidIndex(
         selectedPartIndex.value,
         props.parts.length,
     );
+    // emit a custom event named partSelected to the parent
+    emits('partSelected', selectedPartIndex.value)
 }
 
 const selectPreviousPart = () => {
-    console.log(selectedPartIndex.value)
     selectedPartIndex.value = getPreviousValidIndex(
         selectedPartIndex.value,
         props.parts.length,
     );
+    emits('partSelected', selectedPartIndex.value)
 }
 // computed ===========================
 const selectedPart = computed(() => {
@@ -45,7 +51,7 @@ const selectedPart = computed(() => {
 </script>
 
 <template>
-    <div class="part">
+    <div class="part" :class="position">
         <img :src="selectedPart.src" />
         <button @click="selectPreviousPart()" class="prev-selector"></button>
         <button @click="selectNextPart()" class="next-selector"></button>
