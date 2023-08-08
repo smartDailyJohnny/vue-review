@@ -24,6 +24,10 @@ const selectNextLeftArm = () => { selectedLeftArmIndex.value = getNextValidIndex
 const selectPreviousLeftArm = () => { selectedLeftArmIndex.value = getPreviousValidIndex(selectedLeftArmIndex.value, availableParts.arms.length) }
 const selectNextTorso = () => { selectedTorsoIndex.value = getNextValidIndex(selectedTorsoIndex.value, availableParts.torsos.length) }
 const selectPreviousTorso = () => { selectedTorsoIndex.value = getPreviousValidIndex(selectedTorsoIndex.value, availableParts.torsos.length) }
+const selectNextRightArm = () => { selectedRightArmIndex.value = getNextValidIndex(selectedRightArmIndex.value, availableParts.arms.length) }
+const selectPreviousRightArm = () => { selectedRightArmIndex.value = getPreviousValidIndex(selectedRightArmIndex.value, availableParts.arms.length) }
+const selectNextBase = () => { selectedBaseIndex.value = getNextValidIndex(selectedBaseIndex.value, availableParts.bases.length) }
+const selectPreviousBase = () => { selectedBaseIndex.value = getPreviousValidIndex(selectedBaseIndex.value, availableParts.bases.length) }
 
 </script>
 
@@ -49,16 +53,16 @@ const selectPreviousTorso = () => { selectedTorsoIndex.value = getPreviousValidI
                     <button class="next-selector" @click="selectPreviousTorso">&#9658;</button>
                 </div>
                 <div class="right part">
-                    <img :src="availableParts.arms[0].src" title="right arm" />
-                    <button class="prev-selector">&#9650;</button>
-                    <button class="next-selector">&#9660;</button>
+                    <img :src="availableParts.arms[selectedRightArmIndex].src" title="right arm" />
+                    <button class="prev-selector" @click="selectNextRightArm">&#9650;</button>
+                    <button class="next-selector" @click="selectPreviousRightArm">&#9660;</button>
                 </div>
             </div>
             <div class="bottom-row">
                 <div class="bottom part">
-                    <img :src="availableParts.bases[0].src" title="base" />
-                    <button class="prev-selector">&#9668;</button>
-                    <button class="next-selector">&#9658;</button>
+                    <img :src="availableParts.bases[selectedBaseIndex].src" title="base" />
+                    <button class="prev-selector" @click="selectNextBase">&#9668;</button>
+                    <button class="next-selector" @click="selectPreviousBase">&#9658;</button>
                 </div>
             </div>
         </div>
