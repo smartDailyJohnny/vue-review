@@ -1,5 +1,12 @@
 <script setup>
+import { ref } from 'vue';
 import availableParts from '@/data/parts.js';
+
+const selectedHeadIndex = ref(0);
+
+const getPreviousValidIndex = (index, length) => {
+    const deprecatedIndex = index - 1
+}
 </script>
 
 <template>
@@ -7,31 +14,31 @@ import availableParts from '@/data/parts.js';
         <div>
             <div class="top-row">
                 <div class="top part">
-                    <img :src="availableParts.heads[0].src" title="head" />
-                    <button class="prev-selector">&#9668;</button>
-                    <button class="next-selector">&#9658;</button>
+                    <img :src="availableParts.heads[selectedHeadIndex].src" title="head" />
+                    <button class="prev-selector" @click="selectPreviousHead">&#9668;</button>
+                    <button class="next-selector" @click="selectNextHead">&#9658;</button>
                 </div>
             </div>
             <div class="middle-row">
                 <div class="left part">
-                    <img :src="availableParts.heads[0].src" title="left arm" />
+                    <img :src="availableParts.arms[0].src" title="left arm" />
                     <button class="prev-selector">&#9650;</button>
                     <button class="next-selector">&#9660;</button>
                 </div>
                 <div class="center part">
-                    <img :src="availableParts.heads[0].src" title="left arm" />
+                    <img :src="availableParts.torsos[0].src" title="body" />
                     <button class="prev-selector">&#9668;</button>
                     <button class="next-selector">&#9658;</button>
                 </div>
                 <div class="right part">
-                    <img :src="availableParts.heads[0].src" title="left arm" />
+                    <img :src="availableParts.arms[0].src" title="right arm" />
                     <button class="prev-selector">&#9650;</button>
                     <button class="next-selector">&#9660;</button>
                 </div>
             </div>
             <div class="bottom-row">
                 <div class="bottom part">
-                    <img :src="availableParts.heads[0].src" title="left arm" />
+                    <img :src="availableParts.bases[0].src" title="base" />
                     <button class="prev-selector">&#9668;</button>
                     <button class="next-selector">&#9658;</button>
                 </div>
