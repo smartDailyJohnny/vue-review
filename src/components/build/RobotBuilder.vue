@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, createApp } from 'vue';
+import { ref, computed } from 'vue';
 import availableParts from '@/data/parts.js';
 // state ================================
 const selectedHeadIndex = ref(0);
@@ -32,7 +32,7 @@ const selectPreviousBase = () => { selectedBaseIndex.value = getPreviousValidInd
 const addToCart = () => {
     const robot = selectedRobot.value
     const cost = robot.head.cost + robot.leftArm.cost + robot.torso.cost + robot.rightArm.cost + robot.base.cost
-    cart.value.push({ ...robot.value, cost })
+    cart.value.push({ cost: cost, title: robot.head.title })
 }
 
 // computed ============================
@@ -51,7 +51,7 @@ const selectedRobot = computed(() => {
     <div id="RobotBuilder">
         <div>
             <button class="add-to-cart" @click="addToCart">Add to Cart</button>
-            <pre>{{ cart }}</pre>
+            <!-- <pre>{{ cart }}</pre> -->
             <div class="top-row">
                 <div class="top part">
                     <div class="robot-name">
@@ -86,6 +86,17 @@ const selectedRobot = computed(() => {
                     <button class="prev-selector" @click="selectNextBase">&#9668;</button>
                     <button class="next-selector" @click="selectPreviousBase">&#9658;</button>
                 </div>
+            </div>
+            <div>
+                <h1>Cart</h1>
+                <table>
+                    <tbody>
+                        <tr v-for="(item, index) in cart" :key="index">
+                            <td>{{ item.title }}</td>
+                            <td>{{ item.cost }}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -211,6 +222,11 @@ const selectedRobot = computed(() => {
     .sale {
         color: red;
         font-weight: bold;
+    }
+
+    td,
+    th {
+        text-align: left;
     }
 }
 </style>
