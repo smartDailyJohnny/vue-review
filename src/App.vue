@@ -1,5 +1,6 @@
 <script setup>
 import HomePage from './components/home/HomePage.vue'
+import RobotBuilder from './components/build/RobotBuilder.vue';
 </script>
 
 <template>
@@ -13,7 +14,8 @@ import HomePage from './components/home/HomePage.vue'
     </nav>
   </header>
   <main>
-    <HomePage />
+    <!-- <HomePage /> -->
+    <RobotBuilder />
   </main>
 </template>
 
