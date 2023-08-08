@@ -1,12 +1,30 @@
 <script setup>
 import { ref } from 'vue';
 import availableParts from '@/data/parts.js';
-
+// Data ================================
 const selectedHeadIndex = ref(0);
+const selectedLeftArmIndex = ref(0);
+const selectedTorsoIndex = ref(0);
+const selectedRightArmIndex = ref(0);
+const selectedBaseIndex = ref(0);
 
 const getPreviousValidIndex = (index, length) => {
-    const deprecatedIndex = index - 1
+    const subtractedIndex = index - 1
+    return subtractedIndex < 0 ? length - 1 : subtractedIndex
 }
+
+const getNextValidIndex = (index, length) => {
+    const addedIndex = index + 1
+    return addedIndex > length - 1 ? 0 : addedIndex
+}
+
+const selectNextHead = () => { selectedHeadIndex.value = getNextValidIndex(selectedHeadIndex.value, availableParts.heads.length) }
+const selectPreviousHead = () => { selectedHeadIndex.value = getPreviousValidIndex(selectedHeadIndex.value, availableParts.heads.length) }
+const selectNextLeftArm = () => { selectedLeftArmIndex.value = getNextValidIndex(selectedLeftArmIndex.value, availableParts.arms.length) }
+const selectPreviousLeftArm = () => { selectedLeftArmIndex.value = getPreviousValidIndex(selectedLeftArmIndex.value, availableParts.arms.length) }
+const selectNextTorso = () => { selectedTorsoIndex.value = getNextValidIndex(selectedTorsoIndex.value, availableParts.torsos.length) }
+const selectPreviousTorso = () => { selectedTorsoIndex.value = getPreviousValidIndex(selectedTorsoIndex.value, availableParts.torsos.length) }
+
 </script>
 
 <template>
@@ -21,14 +39,14 @@ const getPreviousValidIndex = (index, length) => {
             </div>
             <div class="middle-row">
                 <div class="left part">
-                    <img :src="availableParts.arms[0].src" title="left arm" />
-                    <button class="prev-selector">&#9650;</button>
-                    <button class="next-selector">&#9660;</button>
+                    <img :src="availableParts.arms[selectedLeftArmIndex].src" title="left arm" />
+                    <button class="prev-selector" @click="selectPreviousLeftArm">&#9650;</button>
+                    <button class="next-selector" @click="selectNextLeftArm">&#9660;</button>
                 </div>
                 <div class="center part">
-                    <img :src="availableParts.torsos[0].src" title="body" />
-                    <button class="prev-selector">&#9668;</button>
-                    <button class="next-selector">&#9658;</button>
+                    <img :src="availableParts.torsos[selectedTorsoIndex].src" title="body" />
+                    <button class="prev-selector" @click="selectNextTorso">&#9668;</button>
+                    <button class="next-selector" @click="selectPreviousTorso">&#9658;</button>
                 </div>
                 <div class="right part">
                     <img :src="availableParts.arms[0].src" title="right arm" />
