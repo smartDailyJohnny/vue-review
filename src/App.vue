@@ -1,5 +1,5 @@
 <script setup>
-import HomePage from './components/HomePage.vue'
+import HomePage from './components/home/HomePage.vue'
 </script>
 
 <template>
@@ -7,7 +7,7 @@ import HomePage from './components/HomePage.vue'
     <nav>
       <ul>
         <li class="nav-item">
-          <img src="@/assets/imgs/build-a-bot-logo.png" class="logo">Build-a-Bot
+          <img src="@/assets/images/build-a-bot-logo.png" class="logo">Build-a-Bot
         </li>
       </ul>
     </nav>
