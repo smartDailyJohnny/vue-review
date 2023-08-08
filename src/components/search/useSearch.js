@@ -4,8 +4,9 @@ import parts from '@/data/parts';
 const allParts = [...parts.heads, ...parts.arms, ...parts.torsos, ...parts.bases];
 
 export default function useSearch(originalSearchTerm) {
+    // array to store search results ===========
     const results = ref([]);
-
+    // search function ========================
     const searchInventory = (searchTerm) => {
         let searchResults;
         const term = searchTerm || originalSearchTerm;
@@ -19,10 +20,11 @@ export default function useSearch(originalSearchTerm) {
         }
         results.value = [...searchResults];
     };
-
+    // run functions ==========================
     searchInventory(originalSearchTerm);
 
     onMounted(() => console.log('Mounted: useSearch'));
 
+    // export functions and data ==============
     return { searchResults: results, search: searchInventory };
 }
