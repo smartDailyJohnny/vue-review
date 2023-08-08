@@ -8,7 +8,7 @@ import RobotBuilder from './components/build/RobotBuilder.vue';
     <nav>
       <ul>
         <li class="nav-item">
-          <img src="@/assets/images/build-a-bot-logo.png" class="logo">Build-a-Bot
+          <img src="@/data/images/build-a-bot-logo.png" class="logo">Build-a-Bot
         </li>
       </ul>
     </nav>
