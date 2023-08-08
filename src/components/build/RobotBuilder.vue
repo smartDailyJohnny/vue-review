@@ -45,6 +45,10 @@ const selectedRobot = computed(() => {
         base: availableParts.bases[selectedBaseIndex.value]
     }
 })
+
+const headBorderStyle = computed(() => {
+    return { border: selectedRobot.value.head.onSale ? '3px solid red' : '' }
+})
 </script>
 
 <template>
@@ -53,7 +57,7 @@ const selectedRobot = computed(() => {
             <button class="add-to-cart" @click="addToCart">Add to Cart</button>
             <!-- <pre>{{ cart }}</pre> -->
             <div class="top-row">
-                <div class="top part">
+                <div class="top part" :style="headBorderStyle">
                     <div class="robot-name">
                         {{ selectedRobot.head.title }}
                         <span v-if="selectedRobot.head.onSale" class="sale">Sale!</span>
