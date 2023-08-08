@@ -18,6 +18,9 @@ const addToCart = () => {
     cart.value.push({ cost: cost, title: robot.head.title })
 }
 
+const testEmit = (part) => {
+    console.log(part)
+}
 </script>
 
 <template>
@@ -26,20 +29,19 @@ const addToCart = () => {
             <button class="add-to-cart" @click="addToCart">Add to Cart</button>
             <pre>{{ cart }}</pre>
             <div class="top-row">
-                <PartSelector :parts="availableParts.heads" position="top"
-                    @partSelected="part => selectedRobot.head = part" />
+                <PartSelector :parts="availableParts.heads" position="top" @partSelected="testEmit" />
             </div>
             <div class="middle-row">
-                <PartSelector :parts="availableParts.arms" position="left"
+                <!-- <PartSelector :parts="availableParts.arms" position="left"
                     @partSelected="part => selectedRobot.leftArm = part" />
                 <PartSelector :parts="availableParts.torsos" position="center"
                     @partSelected="part => selectedRobot.torso = part" />
                 <PartSelector :parts="availableParts.arms" position="right"
-                    @partSelected="part => selectedRobot.rightArm = part" />
+                    @partSelected="part => selectedRobot.rightArm = part" /> -->
             </div>
             <div class="bottom-row">
-                <PartSelector :parts="availableParts.bases" position="bottom"
-                    @partSelected="part => selectedRobot.base = part" />
+                <!-- <PartSelector :parts="availableParts.bases" position="bottom"
+                    @partSelected="part => selectedRobot.base = part" /> -->
             </div>
             <div>
                 <h1>Cart</h1>
