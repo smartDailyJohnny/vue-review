@@ -17,7 +17,7 @@ const router = createRouter({
     {
       path: '/parts/:partType/:id',
       name: 'Parts',
-      component: () => import('@/components/parts/PartsInfo.vue'),
+      component: () => import('@/components/parts/PartInfo.vue'),
     }
   ]
 })
