@@ -13,15 +13,16 @@ const selectedRobot = ref({
 })
 // methods ===========================
 const addToCart = () => {
-    // const robot = selectedRobot.value
-    // const cost = robot.head.cost + robot.leftArm.cost + robot.torso.cost + robot.rightArm.cost + robot.base.cost
-    // cart.value.push({ cost: cost, title: robot.head.title })
-    cart.value.push(selectedRobot.value)
+    const robot = selectedRobot.value
+    const cost = robot.head.cost + robot.leftArm.cost + robot.torso.cost + robot.rightArm.cost + robot.base.cost
+    cart.value.push({ cost: cost, title: robot.head.title })
 }
 
-const getPart = (part) => {
-    selectedRobot.value[part.type] = part
-}
+const getHead = part => selectedRobot.value.head = part
+const getLeftArm = part => selectedRobot.value.leftArm = part
+const getTorso = part => selectedRobot.value.torso = part
+const getRightArm = part => selectedRobot.value.rightArm = part
+const getBase = part => selectedRobot.value.base = part
 </script>
 
 <template>
@@ -30,15 +31,15 @@ const getPart = (part) => {
             <button class="add-to-cart" @click="addToCart">Add to Cart</button>
             <pre>{{ cart }}</pre>
             <div class="top-row">
-                <PartSelector :parts="availableParts.heads" position="top" @partSelected="getPart" />
+                <PartSelector :parts="availableParts.heads" position="top" @partSelected="getHead" />
             </div>
             <div class="middle-row">
-                <PartSelector :parts="availableParts.arms" position="left" @partSelected="getPart" />
-                <PartSelector :parts="availableParts.torsos" position="center" @partSelected="getPart" />
-                <PartSelector :parts="availableParts.arms" position="right" @partSelected="getPart" />
+                <PartSelector :parts="availableParts.arms" position="left" @partSelected="getLeftArm" />
+                <PartSelector :parts="availableParts.torsos" position="center" @partSelected="getTorso" />
+                <PartSelector :parts="availableParts.arms" position="right" @partSelected="getRightArm" />
             </div>
             <div class="bottom-row">
-                <PartSelector :parts="availableParts.bases" position="bottom" @partSelected="getPart" />
+                <PartSelector :parts="availableParts.bases" position="bottom" @partSelected="getBase" />
             </div>
             <div>
                 <h1>Cart</h1>
