@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
-import parts from '@/data/parts';
+import partsData from '@/data/parts';
 
 const route = useRoute()
 const partObj = computed(() => {
@@ -9,7 +9,7 @@ const partObj = computed(() => {
     const id = route.params.id;
     // retrieve an array of parts based on the partType route param
     // this function is responsible for finding the matching part
-    return parts[partType].find((item) => item.id === id);
+    return partsData[partType].find((item) => item.id === id);
 })
 </script>
 
