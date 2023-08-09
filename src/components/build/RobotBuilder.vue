@@ -29,7 +29,7 @@ const getBase = part => selectedRobot.value.base = part
     <div id="RobotBuilder">
         <div>
             <button class="add-to-cart" @click="addToCart">Add to Cart</button>
-            <pre>{{ cart }}</pre>
+            <!-- <pre>{{ cart }}</pre> -->
             <div class="top-row">
                 <PartSelector :parts="availableParts.heads" position="top" @partSelected="getHead" />
             </div>

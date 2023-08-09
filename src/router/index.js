@@ -9,6 +9,11 @@ const router = createRouter({
       name: 'home',
       component: HomePage
     },
+    {
+      path: '/build',
+      name: 'build',
+      component: () => import('@/components/build/RobotBuilder.vue')
+    }
   ]
 })
 

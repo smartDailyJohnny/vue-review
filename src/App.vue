@@ -1,23 +1,20 @@
-<script setup>
-// import HomePage from './components/home/HomePage.vue'
-import RobotBuilder from './components/build/RobotBuilder.vue';
-// import Search from './components/search/Search.vue';
-</script>
-
 <template>
   <header>
     <nav>
       <ul>
         <li class="nav-item">
-          <img src="@/data/images/build-a-bot-logo.png" class="logo">Build-a-Bot
+          <router-link to="/" class="nav-link">
+            <img src="@/data/images/build-a-bot-logo.png" class="logo">Build-a-Bot
+          </router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/build" class="nav-link">Build</router-link>
         </li>
       </ul>
     </nav>
   </header>
   <main>
-    <!-- <HomePage /> -->
-    <RobotBuilder />
-    <!-- <Search /> -->
+    <router-view />
   </main>
 </template>
 
@@ -26,7 +23,9 @@ body {
   background: linear-gradient(to bottom, #555, #999);
   background-attachment: fixed;
 }
+</style>
 
+<style lang="scss" scoped>
 main {
   margin: 0 auto;
   padding: 30px;
@@ -56,5 +55,14 @@ ul {
 .logo {
   vertical-align: middle;
   height: 30px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.router-link-active {
+  color: white;
 }
 </style>
