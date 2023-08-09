@@ -1,3 +1,10 @@
+<script setup>
+import { ref } from 'vue';
+import parts from '@/data/parts';
+
+const torsos = ref(parts.torsos);
+</script>
+        
 <template>
     <div>
         <h2>Torsos</h2>
@@ -11,9 +18,3 @@
     </div>
 </template>
   
-<script setup>
-import { ref } from 'vue';
-import parts from '@/data/parts';
-
-const torsos = ref(parts.torsos);
-</script>

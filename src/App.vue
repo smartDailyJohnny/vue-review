@@ -10,6 +10,9 @@
         <li class="nav-item">
           <router-link to="/build" class="nav-link">Build</router-link>
         </li>
+        <li class="nav-item">
+          <router-link to="/parts/browse" class="nav-link">Browse Parts</router-link>
+        </li>
       </ul>
     </nav>
   </header>

@@ -1,12 +1,21 @@
+<script setup>
+const menuList = [
+    { name: 'Heads', routeName: 'BrowseHeads' },
+    { name: 'Arms', routeName: 'BrowseArms' },
+    { name: 'Torsos', routeName: 'BrowseTorsos' },
+    { name: 'Bases', routeName: 'BrowseBases' },
+];
+</script>
+
 <template>
-    <div>
+    <div id="BrowseParts">
         <h1>Browse Parts</h1>
         <ul class="menu">
-            <li>Heads</li>
-            <li>Arms</li>
-            <li>Torsos</li>
-            <li>Bases</li>
+            <li v-for="item in menuList" :key="item.name">
+                <router-link :to="{ name: item.routeName }">{{ item.name }}</router-link>
+            </li>
         </ul>
+        <router-view></router-view>
     </div>
 </template>
   

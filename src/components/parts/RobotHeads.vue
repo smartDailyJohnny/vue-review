@@ -1,3 +1,10 @@
+<script setup>
+import { ref } from 'vue';
+import parts from '@/data/parts';
+
+const heads = ref(parts.heads);
+</script>
+
 <template>
     <div>
         <h2>Heads</h2>
@@ -10,9 +17,3 @@
     </div>
 </template>
   
-<script setup>
-import { ref } from 'vue';
-import parts from '@/data/parts';
-
-const heads = ref(parts.heads);
-</script>
