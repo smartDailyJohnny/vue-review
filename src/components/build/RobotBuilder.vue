@@ -1,7 +1,9 @@
 <script setup>
 import { ref } from 'vue';
+import { onBeforeRouteLeave } from 'vue-router';
 import availableParts from '@/data/parts';
 import PartSelector from '@/components/build/PartSelector.vue';
+
 // state ================================
 const cart = ref([]);
 const selectedRobot = ref({
@@ -11,11 +13,13 @@ const selectedRobot = ref({
     rightArm: {},
     base: {}
 })
+const addedToCart = ref(false) // nav guard
 // methods ===========================
 const addToCart = () => {
     const robot = selectedRobot.value
     const cost = robot.head.cost + robot.leftArm.cost + robot.torso.cost + robot.rightArm.cost + robot.base.cost
     cart.value.push({ cost: cost, title: robot.head.title })
+    addedToCart.value = true
 }
 
 const getHead = part => selectedRobot.value.head = part
@@ -23,6 +27,17 @@ const getLeftArm = part => selectedRobot.value.leftArm = part
 const getTorso = part => selectedRobot.value.torso = part
 const getRightArm = part => selectedRobot.value.rightArm = part
 const getBase = part => selectedRobot.value.base = part
+
+// lifecycle hooks / router hooks ===========================
+onBeforeRouteLeave((to, from, next) => {
+    if (addedToCart.value) {
+        next(true)
+    } else {
+        // confirm returns a boolean
+        const response = confirm('Are you sure you want to leave without adding to cart?')
+        next(response)
+    }
+})
 </script>
 
 <template>

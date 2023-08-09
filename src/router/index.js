@@ -52,6 +52,12 @@ const router = createRouter({
       path: '/parts/:partType/:id',
       name: 'Parts',
       component: () => import('@/components/parts/PartInfo.vue'),
+      // adding navigation guard in routes
+      beforeEnter(to, from, next) {
+        const isValidId = Number.isInteger(Number(to.params.id))
+        // if isValidId is true, then it will go to the next route
+        next(isValidId)
+      }
     },
 
   ]

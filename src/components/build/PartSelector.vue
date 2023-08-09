@@ -64,6 +64,7 @@ onUpdated(() => {
         <router-link :to="{
             name: 'Parts',
             params: {
+                // id: 'foo', // this is for testing navigation guard
                 id: selectedPart.id,
                 partType: selectedPart.type,
             }
