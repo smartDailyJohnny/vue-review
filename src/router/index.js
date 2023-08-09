@@ -6,13 +6,18 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'Home',
       component: HomePage
     },
     {
       path: '/build',
-      name: 'build',
+      name: 'Build',
       component: () => import('@/components/build/RobotBuilder.vue')
+    },
+    {
+      path: '/parts/:partType/:id',
+      name: 'Parts',
+      component: () => import('@/components/parts/PartsInfo.vue'),
     }
   ]
 })
