@@ -4,22 +4,23 @@ import availableParts from '@/data/parts';
 import PartSelector from '@/components/build/PartSelector.vue';
 // state ================================
 const cart = ref([]);
-const selectedRobot = {
+const selectedRobot = ref({
     head: {},
     leftArm: {},
     torso: {},
     rightArm: {},
     base: {}
-}
+})
 // methods ===========================
 const addToCart = () => {
-    const robot = selectedRobot.value
-    const cost = robot.head.cost + robot.leftArm.cost + robot.torso.cost + robot.rightArm.cost + robot.base.cost
-    cart.value.push({ cost: cost, title: robot.head.title })
+    // const robot = selectedRobot.value
+    // const cost = robot.head.cost + robot.leftArm.cost + robot.torso.cost + robot.rightArm.cost + robot.base.cost
+    // cart.value.push({ cost: cost, title: robot.head.title })
+    cart.value.push(selectedRobot.value)
 }
 
-const testEmit = (part) => {
-    console.log(part)
+const getPart = (part) => {
+    selectedRobot.value[part.type] = part
 }
 </script>
 
@@ -29,19 +30,15 @@ const testEmit = (part) => {
             <button class="add-to-cart" @click="addToCart">Add to Cart</button>
             <pre>{{ cart }}</pre>
             <div class="top-row">
-                <PartSelector :parts="availableParts.heads" position="top" @partSelected="testEmit" />
+                <PartSelector :parts="availableParts.heads" position="top" @partSelected="getPart" />
             </div>
             <div class="middle-row">
-                <!-- <PartSelector :parts="availableParts.arms" position="left"
-                    @partSelected="part => selectedRobot.leftArm = part" />
-                <PartSelector :parts="availableParts.torsos" position="center"
-                    @partSelected="part => selectedRobot.torso = part" />
-                <PartSelector :parts="availableParts.arms" position="right"
-                    @partSelected="part => selectedRobot.rightArm = part" /> -->
+                <PartSelector :parts="availableParts.arms" position="left" @partSelected="getPart" />
+                <PartSelector :parts="availableParts.torsos" position="center" @partSelected="getPart" />
+                <PartSelector :parts="availableParts.arms" position="right" @partSelected="getPart" />
             </div>
             <div class="bottom-row">
-                <!-- <PartSelector :parts="availableParts.bases" position="bottom"
-                    @partSelected="part => selectedRobot.base = part" /> -->
+                <PartSelector :parts="availableParts.bases" position="bottom" @partSelected="getPart" />
             </div>
             <div>
                 <h1>Cart</h1>

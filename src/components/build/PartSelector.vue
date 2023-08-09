@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted, onUpdated } from 'vue';
 // props ===========================
 const props = defineProps({
     parts: {
@@ -48,6 +48,15 @@ const selectPreviousPart = () => {
 const selectedPart = computed(() => {
     return props.parts[selectedPartIndex.value];
 });
+
+// lifecycle hooks ===========================
+onMounted(() => {
+    emit('partSelected', selectedPart.value)
+})
+
+onUpdated(() => {
+    emit('partSelected', selectedPart.value)
+})
 </script>
 
 <template>
