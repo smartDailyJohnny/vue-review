@@ -11,13 +11,9 @@
     </div>
 </template>
   
-<script>
-import parts from '../data/parts';
+<script setup>
+import { ref } from 'vue';
+import parts from '@/data/parts';
 
-export default {
-    name: 'RobotBases',
-    data() {
-        return { bases: parts.bases };
-    },
-};
+const bases = ref(parts.bases);
 </script>
