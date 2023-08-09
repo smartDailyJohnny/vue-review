@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '@/components/home/HomePage.vue'
+import SidebarStandard from '@/components/sidebars/SidebarStandard.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,12 +8,18 @@ const router = createRouter({
     {
       path: '/',
       name: 'Home',
-      component: HomePage
+      components: {
+        default: HomePage,
+        sidebar: SidebarStandard,
+      },
     },
     {
       path: '/build',
       name: 'Build',
-      component: () => import('@/components/build/RobotBuilder.vue')
+      components: {
+        default: () => import('@/components/build/RobotBuilder.vue'),
+        sidebar: () => import('@/components/sidebars/SidebarBuild.vue'),
+      }
     },
     {
       path: '/parts/browse',

@@ -16,15 +16,15 @@
       </ul>
     </nav>
   </header>
+  <!-- this here is the sidebar + the main content -->
   <div class="container">
     <aside class="aside">
       <router-view name="sidebar" />
     </aside>
+    <main>
+      <router-view />
+    </main>
   </div>
-
-  <main>
-    <router-view />
-  </main>
 </template>
 
 <style lang="scss">
