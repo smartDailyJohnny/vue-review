@@ -8,7 +8,6 @@ import PartSelector from '@/components/build/PartSelector.vue';
 
 const robotStore = useRobotsStore()
 // state ================================
-const cart = ref([]);
 const selectedRobot = ref({
     head: {},
     leftArm: {},
@@ -22,7 +21,7 @@ const addToCart = () => {
     const robot = selectedRobot.value
     const cost = robot.head.cost + robot.leftArm.cost + robot.torso.cost + robot.rightArm.cost + robot.base.cost
     // cart.value.push({ cost: cost, title: robot.head.title })
-    robotStore.addRobotToCart({ cost: cost, title: robot.head.title })
+    robotStore.addRobotToCart({ ...robot, cost })
     addedToCart.value = true
 }
 
@@ -48,7 +47,6 @@ onBeforeRouteLeave((to, from, next) => {
     <div id="RobotBuilder">
         <div>
             <button class="add-to-cart" @click="addToCart">Add to Cart</button>
-            <!-- <pre>{{ cart }}</pre> -->
             <div class="top-row">
                 <PartSelector :parts="availableParts.heads" position="top" @partSelected="getHead" />
             </div>
@@ -64,15 +62,15 @@ onBeforeRouteLeave((to, from, next) => {
                 <h1>Cart</h1>
                 <table>
                     <tbody>
-                        <tr v-for="(item, index) in cart" :key="index">
-                            <td>{{ item.title }}</td>
+                        <tr v-for="(item, index) in robotStore.cart" :key="index">
+                            <td>{{ item.head.title }}</td>
                             <td>{{ item.cost }}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-        <pre>{{ robotStore.cart }}</pre>
+        <!-- <pre>{{ robotStore.cart }}</pre> -->
     </div>
 </template>
 
