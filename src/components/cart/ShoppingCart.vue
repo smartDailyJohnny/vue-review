@@ -44,7 +44,6 @@ const cartSaleItems = computed(() => {
                 <tr v-for="(robot, index) in cartSaleItems" :key="index">
                     <td class="robot-title">
                         {{ robot.head.title }}
-                        <pre>{{ cartSaleItems }}</pre>
                     </td>
                     <td class="cost">
                         {{ robot.cost }}
