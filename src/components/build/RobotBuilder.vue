@@ -1,9 +1,12 @@
 <script setup>
 import { ref } from 'vue';
 import { onBeforeRouteLeave } from 'vue-router';
+import { useRobotsStore } from "@/stores/robots";
+
 import availableParts from '@/data/parts';
 import PartSelector from '@/components/build/PartSelector.vue';
 
+const robotStore = useRobotsStore()
 // state ================================
 const cart = ref([]);
 const selectedRobot = ref({
@@ -18,7 +21,8 @@ const addedToCart = ref(false) // nav guard
 const addToCart = () => {
     const robot = selectedRobot.value
     const cost = robot.head.cost + robot.leftArm.cost + robot.torso.cost + robot.rightArm.cost + robot.base.cost
-    cart.value.push({ cost: cost, title: robot.head.title })
+    // cart.value.push({ cost: cost, title: robot.head.title })
+    robotStore.addRobotToCart({ cost: cost, title: robot.head.title })
     addedToCart.value = true
 }
 
@@ -68,6 +72,7 @@ onBeforeRouteLeave((to, from, next) => {
                 </table>
             </div>
         </div>
+        <pre>{{ robotStore.cart }}</pre>
     </div>
 </template>
 

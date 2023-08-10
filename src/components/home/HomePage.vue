@@ -1,12 +1,4 @@
 <script setup>
-import { useStore } from "@/stores"
-import { onMounted } from "vue";
-
-const store = useStore()
-
-onMounted(() => {
-  console.log(store)
-})
 </script>
 
 <template>
@@ -18,7 +10,6 @@ onMounted(() => {
       <router-link to="/build">Get started</router-link> building your first robot!
     </div>
   </div>
-  <pre>{{ store.robots.msg }}</pre>
 </template>
 
 <style lang="scss" scoped>

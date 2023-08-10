@@ -59,7 +59,11 @@ const router = createRouter({
         next(isValidId)
       }
     },
-
+    {
+      path: '/cart',
+      name: 'Cart',
+      component: () => import('@/components/cart/ShoppingCart.vue'),
+    }
   ]
 })
 

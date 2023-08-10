@@ -3,6 +3,11 @@ import { defineStore } from "pinia";
 export const useRobotsStore = defineStore("robots", {
     state: () => ({
         cart: [],
-        msg: "Hello from robots store"
-    })
+        msg: "e"
+    }),
+    actions: {
+        addRobotToCart(robot) {
+            this.cart.push(robot)
+        }
+    }
 })
