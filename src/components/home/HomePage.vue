@@ -1,3 +1,9 @@
+<script setup>
+import { useRobotsStore } from '@/stores/modules/robots';
+
+const robotsStore = useRobotsStore();
+</script>
+
 <template>
   <div id="HomePage">
     <div>
@@ -7,6 +13,7 @@
       <router-link to="/build">Get started</router-link> building your first robot!
     </div>
   </div>
+  <pre>{{ robotsStore.msg }}</pre>
 </template>
 
 <style lang="scss" scoped>

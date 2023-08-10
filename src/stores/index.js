@@ -1,7 +1,8 @@
 import { defineStore } from "pinia";
+import useRobotsModule from "@/stores/modules/robots.js"
 
-export const useStore = defineStore("main", {
-    state: () => ({
-        msg: "Hello world"
-    })
+export const useStore = defineStore("root", {
+    modules: {
+        robots: useRobotsModule
+    }
 })
