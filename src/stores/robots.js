@@ -6,7 +6,7 @@ export const useRobotsStore = defineStore("robots", {
     }),
     getters: {
         cartSaleItems() {
-            this.cart.filter(item => item.head.onSale)
+            return this.cart.filter(item => item.head.onSale)
         }
     },
     actions: {
